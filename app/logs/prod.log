@@ -1,0 +1,2 @@
+[2011-08-04 14:31:20] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /" (uncaught exception) at /var/www/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/EventListener/RouterListener.php line 88 [] []
+[2011-08-05 16:43:24] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /blog/0" (uncaught exception) at /var/www/Symfony/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/EventListener/RouterListener.php line 88 [] []
