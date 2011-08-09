@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Sdz{% endblock %}</title>
+    
+        {% stylesheets output='css/am.min.css'
+            '../app/Ressources/public/css/*' %}
+        
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen" />
+    
+        {% endstylesheets }
+    </head>
+
+    <body>
+        <div id="en_tete">
+            <h1>Ma Première Application Symfony2</h1>
+        </div>
+
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Le blog</h3>
+                <ul>
+                    <li><a href="{{ path('sdzblog') }}">Accueil du blog</a></li>
+                    <li><a href="{{ path('sdzblog_ajouter') }}">Ajouter un article</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="corps">
+        
+            {% block body %}
+            {% endblock %}
+            
+        </div>
+        
+        <div id="pied_de_page">
+            <p>MonSuperBlog propulsé par Symfony2</p>
+        </div>
+        </body>
+</html>

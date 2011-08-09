@@ -1,0 +1,113 @@
+/* 
+    Document   : style
+    Created on : 8 août 2011, 17:14:29
+    Author     : timothee
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body { 
+    width: 760px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #CFEAFD;
+}
+
+/* En-tête */
+#en_tete
+{
+    width: 760px;
+    background-color: #FFECFF;
+    border: 1px dashed blue;
+    border-bottom: none;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 0.5em;
+}
+
+/* Le menu */
+#menu
+{
+    float: right;
+    width: 120px;
+}
+
+.element_menu
+{
+    background-color: #FFECFF;
+    border: 1px dashed blue;
+    border-bottom: none;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.element_menu h3
+{
+    color: blue;
+    text-align: center;
+    font-family: Arial, "Arial Black", "Times New Roman", Times, serif;
+}
+
+.element_menu ul
+{
+    padding: 0px;
+    padding-left: 20px;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+.element_menu a
+{
+    color: blue;
+}
+
+.element_menu a:hover
+{
+    background-color: purple;
+    color: white;
+}
+
+/* Le corps de la page */
+#corps
+{
+    margin-right: 140px;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: #FC00FF;
+    background-color: #FFECFF;
+    border: 1px dashed blue;
+    border-bottom: none;
+}
+
+#corps h2
+{
+    height: 29px;
+    padding-left: 30px;
+    color: #FC00FF;
+    text-align: left;
+}
+
+#corps h1
+{
+    color: #FC00FF;
+    font-weight: bold;
+    text-align: center;
+    font-family: Arial, "Arial Black", "Times New Roman", Times, serif;
+}
+
+/* Le pied de page */
+#pied_de_page
+{
+    padding: 10px;
+    text-align: center;
+    color: #3CC500;
+    background-color: #FFECFF;
+    border: 1px dashed blue;
+    border-bottom: none;
+}
