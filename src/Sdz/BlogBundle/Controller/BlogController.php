@@ -15,7 +15,7 @@ class BlogController extends Controller
             throw new NotFoundHttpException('Page inexistante (page = '.$page.')');
         }
         
-        return $this->render('SdzBlogBundle:Blog:liste.html.twig');
+        return $this->render('SdzBlogBundle:Blog:liste.html.twig', array('articles' => array()));
     }
     
     public function voirAction($slug)
