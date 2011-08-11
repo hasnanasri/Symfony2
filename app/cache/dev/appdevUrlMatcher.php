@@ -84,6 +84,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // _assetic_193fa33
+        if ($pathinfo === '/css/am.min.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => '193fa33',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_193fa33',);
+        }
+
         // _wdt
         if (preg_match('#^/_wdt/(?P<token>[^/]+?)$#x', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',)), array('_route' => '_wdt'));
@@ -144,9 +149,65 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/blog')) {
+            if (0 === strpos($pathinfo, '/blog/crud')) {
+                // article
+                if (rtrim($pathinfo, '/') === '/blog/crud') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'article');
+                    }
+                    return array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::indexAction',  '_route' => 'article',);
+                }
+
+                // article_show
+                if (preg_match('#^/blog/crud/(?P<id>[^/]+?)/show$#x', $pathinfo, $matches)) {
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::showAction',)), array('_route' => 'article_show'));
+                }
+
+                // article_new
+                if ($pathinfo === '/blog/crud/new') {
+                    return array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::newAction',  '_route' => 'article_new',);
+                }
+
+                // article_create
+                if ($pathinfo === '/blog/crud/create') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_article_create;
+                    }
+                    return array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::createAction',  '_route' => 'article_create',);
+                }
+                not_article_create:
+
+                // article_edit
+                if (preg_match('#^/blog/crud/(?P<id>[^/]+?)/edit$#x', $pathinfo, $matches)) {
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::editAction',)), array('_route' => 'article_edit'));
+                }
+
+                // article_update
+                if (preg_match('#^/blog/crud/(?P<id>[^/]+?)/update$#x', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_article_update;
+                    }
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::updateAction',)), array('_route' => 'article_update'));
+                }
+                not_article_update:
+
+                // article_delete
+                if (preg_match('#^/blog/crud/(?P<id>[^/]+?)/delete$#x', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_article_delete;
+                    }
+                    return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::deleteAction',)), array('_route' => 'article_delete'));
+                }
+                not_article_delete:
+
+            }
+
             // sdzblog
             if (preg_match('#^/blog(?:/(?P<page>\\d+))?$#x', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controlleur' => 'SdzBlogBundle:Blog:liste',  'page' => 1,)), array('_route' => 'sdzblog'));
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\BlogController::listeAction',  'page' => 1,)), array('_route' => 'sdzblog'));
             }
 
             // sdzblog_voir

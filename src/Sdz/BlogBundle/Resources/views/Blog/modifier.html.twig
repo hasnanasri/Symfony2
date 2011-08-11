@@ -1,0 +1,13 @@
+{% extends "SdzBlogBundle::layout.html.twig" %}
+
+{% block title %}Modifier un article - {{ parent() }}{% endblock %}
+
+{% block sdzblog_body %}
+    
+    <h2>Modifier un article</h2>
+    
+    {% include "SdzBlogBundle:Blog:formulaire.html.twig" with {'form': form} %}
+    
+    <p>Vous éditez un article déjà existant.</p>
+    
+{% endblock %}

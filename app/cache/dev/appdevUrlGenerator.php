@@ -23,6 +23,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_demo' => true,
        '_demo_hello' => true,
        '_demo_contact' => true,
+       '_assetic_193fa33' => true,
        '_wdt' => true,
        '_profiler_search' => true,
        '_profiler_purge' => true,
@@ -33,6 +34,13 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
+       'article' => true,
+       'article_show' => true,
+       'article_new' => true,
+       'article_create' => true,
+       'article_edit' => true,
+       'article_update' => true,
+       'article_delete' => true,
        'sdzblog' => true,
        'sdzblog_voir' => true,
        'sdzblog_ajouter' => true,
@@ -114,6 +122,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::contactAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/demo/contact',  ),));
     }
 
+    private function get_assetic_193fa33RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '193fa33',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/am.min.css',  ),));
+    }
+
     private function get_wdtRouteInfo()
     {
         return array(array (  0 => 'token',), array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'token',  ),  1 =>   array (    0 => 'text',    1 => '/_wdt',  ),));
@@ -164,9 +177,44 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
     }
 
+    private function getarticleRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/blog/crud/',  ),));
+    }
+
+    private function getarticle_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog/crud',  ),));
+    }
+
+    private function getarticle_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/blog/crud/new',  ),));
+    }
+
+    private function getarticle_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/blog/crud/create',  ),));
+    }
+
+    private function getarticle_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog/crud',  ),));
+    }
+
+    private function getarticle_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog/crud',  ),));
+    }
+
+    private function getarticle_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\ArticleController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/blog/crud',  ),));
+    }
+
     private function getsdzblogRouteInfo()
     {
-        return array(array (  0 => 'page',), array (  '_controlleur' => 'SdzBlogBundle:Blog:liste',  'page' => 1,), array (  'page' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  1 =>   array (    0 => 'text',    1 => '/blog',  ),));
+        return array(array (  0 => 'page',), array (  '_controller' => 'Sdz\\BlogBundle\\Controller\\BlogController::listeAction',  'page' => 1,), array (  'page' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'page',  ),  1 =>   array (    0 => 'text',    1 => '/blog',  ),));
     }
 
     private function getsdzblog_voirRouteInfo()
