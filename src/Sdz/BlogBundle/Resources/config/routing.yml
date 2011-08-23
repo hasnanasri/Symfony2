@@ -27,6 +27,7 @@ sdzblog_supprimer:
   defaults: { _controller: SdzBlogBundle:Blog:supprimer }
   requirements:
     id: \d+
+    
 HelloTheWorld:
     pattern:  /hello-world
     defaults: { _controller: SdzBlogBundle:Blog:index }

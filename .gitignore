@@ -1,2 +1,5 @@
 /.settings/
 /nbproject/private/
+/.buildpath
+/.project
+/app/cache/

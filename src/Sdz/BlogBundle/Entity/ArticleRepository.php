@@ -12,6 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
+    public function getAvecTags(array $tags)
+    {
+        $qb = $this->createQueryBuilder('a');
+        
+        // On fait une jointure sur la table des tags, avec pour alias 't'
+        $qb->join('a.tags', 't')
+           ->where($qb->expr()->in('t.nom', $tags)); // Puis on filtre sur le nom des tags
+        
+        // enfin, on retourne le résultat
+        return $qb->getQuery()->getResult();
+    }
+    
     public function getByDate(\DateTime $date1, \DateTime $date2)
     {
         $queryBuilder = $this->createQueryBuilder('a');

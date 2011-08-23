@@ -22,11 +22,11 @@ class Tag
     private $id;
 
     /**
-     * @var string $tag
+     * @var string $nom
      *
-     * @ORM\Column(name="tag", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $tag;
+    private $nom;
 
 
     /**
@@ -40,22 +40,22 @@ class Tag
     }
 
     /**
-     * Set tag
+     * Set nom
      *
-     * @param string $tag
+     * @param string $nom
      */
-    public function setTag($tag)
+    public function setNom($nom)
     {
-        $this->tag = $tag;
+        $this->nom = $nom;
     }
 
     /**
-     * Get tag
+     * Get nom
      *
      * @return string 
      */
-    public function getTag()
+    public function getNom()
     {
-        return $this->tag;
+        return $this->nom;
     }
 }

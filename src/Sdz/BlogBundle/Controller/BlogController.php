@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Sdz\BlogBundle\Entity\Article;
+
 class BlogController extends Controller
 {
     public function listeAction($page)
@@ -45,7 +47,19 @@ class BlogController extends Controller
     
     public function ajouterAction()
     {
-        return $this->render('SdzBlogBundle:Blog:ajouter.html.twig');
+        $article = new Article();
+        
+        $formBuilder = $this->createFormBuilder($article);
+        $formBuilder
+            ->add('date', 'date')
+            ->add('titre', 'text')
+            ->add('contenu', 'textarea')
+            ->add('pseudo', 'text');
+        $form = $formBuilder->getForm();
+        
+        return $this->render('SdzBlogBundle:Blog:ajouter.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
     
     public function modifierAction($id)
