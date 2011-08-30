@@ -1,3 +1,7 @@
+IlowebPortfolioBundle:
+    resource: "@IlowebPortfolioBundle/Resources/config/routing.yml"
+    prefix:   /iloweb
+
 SdzBlogBundle:
     resource: "@SdzBlogBundle/Resources/config/routing.yml"
     prefix:   /blog

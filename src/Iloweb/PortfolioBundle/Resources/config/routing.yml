@@ -1,0 +1,11 @@
+IlowebPortfolioBundle_homepage:
+    pattern:  /
+    defaults: { _controller: IlowebPortfolioBundle:Default:index }
+
+ilowebportfolio_new:
+  pattern:  /image/new
+  defaults: { _controller: IlowebPortfolioBundle:Portfolio:new }
+
+ilowebportfolio_crud:
+  resource: "routing/image.yml"
+  prefix:   /image
